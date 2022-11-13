@@ -8,10 +8,12 @@
 import Foundation
 import Realm
 import RealmSwift
+import Combine
 
 protocol RealmManagerProtocol {
     func addNew(word: Word)
     func read() -> Results<Word>?
+    func removeAll()
 }
 
 final class RealmManager: RealmManagerProtocol {
@@ -33,6 +35,12 @@ final class RealmManager: RealmManagerProtocol {
             result = realm.objects(Word.self)
         }
         return result
+    }
+    
+    func removeAll() {
+        enterRealm {
+            realm.deleteAll()
+        }
     }
     
     private func enterRealm(action: () -> Void) {

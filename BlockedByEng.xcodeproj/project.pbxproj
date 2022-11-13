@@ -26,6 +26,8 @@
 		098091E42921006800CB5936 /* ViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098091E32921006800CB5936 /* ViewControllerViewModel.swift */; };
 		098091E7292100AD00CB5936 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098091E6292100AD00CB5936 /* Coordinator.swift */; };
 		098091E9292116C900CB5936 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098091E8292116C900CB5936 /* BaseViewController.swift */; };
+		098091EC2921525E00CB5936 /* MainViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098091EB2921525E00CB5936 /* MainViewControllerCell.swift */; };
+		098091EE29216E7A00CB5936 /* MainCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098091ED29216E7A00CB5936 /* MainCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		098091E32921006800CB5936 /* ViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerViewModel.swift; sourceTree = "<group>"; };
 		098091E6292100AD00CB5936 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		098091E8292116C900CB5936 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		098091EB2921525E00CB5936 /* MainViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerCell.swift; sourceTree = "<group>"; };
+		098091ED29216E7A00CB5936 /* MainCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,7 @@
 		098091E12920E09800CB5936 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
+				098091EA2921524800CB5936 /* MainCells */,
 				098091B32920D14600CB5936 /* MainViewController.swift */,
 				098091E32921006800CB5936 /* ViewControllerViewModel.swift */,
 			);
@@ -160,6 +165,15 @@
 				098091E6292100AD00CB5936 /* Coordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		098091EA2921524800CB5936 /* MainCells */ = {
+			isa = PBXGroup;
+			children = (
+				098091EB2921525E00CB5936 /* MainViewControllerCell.swift */,
+				098091ED29216E7A00CB5936 /* MainCellViewModel.swift */,
+			);
+			path = MainCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,9 +286,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				098091B42920D14600CB5936 /* MainViewController.swift in Sources */,
+				098091EE29216E7A00CB5936 /* MainCellViewModel.swift in Sources */,
 				098091E42921006800CB5936 /* ViewControllerViewModel.swift in Sources */,
 				098091B02920D14300CB5936 /* AppDelegate.swift in Sources */,
 				098091DF2920DF7E00CB5936 /* RealmManager.swift in Sources */,
+				098091EC2921525E00CB5936 /* MainViewControllerCell.swift in Sources */,
 				098091B22920D14600CB5936 /* SceneDelegate.swift in Sources */,
 				098091E9292116C900CB5936 /* BaseViewController.swift in Sources */,
 				098091DC2920DE2700CB5936 /* WordModel.swift in Sources */,
@@ -329,7 +345,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -346,7 +362,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -400,7 +416,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -425,7 +441,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -453,7 +469,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
