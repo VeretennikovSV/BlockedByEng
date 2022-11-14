@@ -11,8 +11,8 @@ import RealmSwift
 import Combine
 
 protocol RealmManagerProtocol {
-    func addNew(word: Word)
-    func read() -> Results<Word>?
+    func addNew<T: Object>(word: T)
+    func read<T: Object>() -> Results<T>?
     func removeAll()
 }
 
@@ -20,7 +20,7 @@ final class RealmManager: RealmManagerProtocol {
     
     private var realm: Realm!
     
-    func addNew(word: Word) {
+    func addNew<T: Object>(word: T) {
         print("User Realm User file location: \(realm.configuration.fileURL!.path)")
         
         enterRealm {
@@ -28,11 +28,10 @@ final class RealmManager: RealmManagerProtocol {
         }
     }
     
-    func read() -> Results<Word>? {
-        var result: Results<Word>?
+    func read<T: Object>() -> Results<T>? {
+        var result: Results<T>?
         enterRealm {
-            print(realm.objects(Word.self))
-            result = realm.objects(Word.self)
+            result = realm.objects(T.self)
         }
         return result
     }
@@ -55,8 +54,13 @@ final class RealmManager: RealmManagerProtocol {
     }
     
     init() {
+        let conf = Realm.Configuration(schemaVersion: 3) { migration, oldSchemaVersion in
+            if oldSchemaVersion < 3 {
+                
+            }
+        }
         do {
-            self.realm = try Realm(configuration: .defaultConfiguration)
+            self.realm = try Realm(configuration: conf)
         } catch let error {
             print(error)
             fatalError()

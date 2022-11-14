@@ -14,6 +14,7 @@ final class MainViewController: BaseViewController {
     private var viewModel: ViewControllerViewModelProtocol
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     private let layout = UICollectionViewFlowLayout()
+    private let addButton = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,7 @@ final class MainViewController: BaseViewController {
         setLayout()
         addSubviews()
         
+        collectionView.contentInset.top = 20
         viewModel.reloader.sink { _ in
             self.collectionView.reloadData()
         }.store(in: &viewModel.db)
@@ -41,19 +43,32 @@ final class MainViewController: BaseViewController {
     
     private func addSubviews() {
         view.addSubview(collectionView)
+        view.insertSubview(addButton, aboveSubview: collectionView)
+        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.register(MainViewControllerCell.self, forCellWithReuseIdentifier: MainViewControllerCell.cellID)
         collectionView.alwaysBounceVertical = true
+        
+        
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        addButton.image = UIImage(systemName: "plus.rectangle.fill")
+        addButton.tintColor = #colorLiteral(red: 0, green: 0.6058987975, blue: 1, alpha: 1)
+        addButton.contentMode = .scaleAspectFit
     }
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            addButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            addButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            addButton.widthAnchor.constraint(equalToConstant: constants.cellWidth * 0.2),
+            addButton.heightAnchor.constraint(equalToConstant: constants.cellWidth * 0.2)
         ])  
     }
     
@@ -68,11 +83,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) 
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainViewControllerCell.cellID, for: indexPath) as? MainViewControllerCell else { return UICollectionViewCell() }
         
-        var content = UIListContentConfiguration.cell()
-        content.text = viewModel.results?.sorted(by: {$0.creationDate < $1.creationDate})[indexPath.row].learningTitle
-        cell.backgroundColor = .red
+        cell.configureCellWith(viewModel: viewModel.createCellViewModel(indexPath: indexPath))
         
         return cell
     }  

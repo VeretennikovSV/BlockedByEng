@@ -46,6 +46,7 @@
 		098091E8292116C900CB5936 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		098091EB2921525E00CB5936 /* MainViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerCell.swift; sourceTree = "<group>"; };
 		098091ED29216E7A00CB5936 /* MainCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellViewModel.swift; sourceTree = "<group>"; };
+		09B6D8D129227A9300215E43 /* BlockedByEng.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = BlockedByEng.entitlements; path = BlockedByEng/BlockedByEng.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +71,7 @@
 		098091A32920D14300CB5936 = {
 			isa = PBXGroup;
 			children = (
+				09B6D8D129227A9300215E43 /* BlockedByEng.entitlements */,
 				098091E22921000D00CB5936 /* Graphics */,
 				098091AE2920D14300CB5936 /* BlockedByEng */,
 				098091AD2920D14300CB5936 /* Products */,
@@ -143,9 +145,8 @@
 		098091E12920E09800CB5936 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
+				09B6D8D229228AE300215E43 /* ViewController */,
 				098091EA2921524800CB5936 /* MainCells */,
-				098091B32920D14600CB5936 /* MainViewController.swift */,
-				098091E32921006800CB5936 /* ViewControllerViewModel.swift */,
 			);
 			path = MainViewController;
 			sourceTree = "<group>";
@@ -174,6 +175,15 @@
 				098091ED29216E7A00CB5936 /* MainCellViewModel.swift */,
 			);
 			path = MainCells;
+			sourceTree = "<group>";
+		};
+		09B6D8D229228AE300215E43 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				098091B32920D14600CB5936 /* MainViewController.swift */,
+				098091E32921006800CB5936 /* ViewControllerViewModel.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -431,6 +441,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BlockedByEng/BlockedByEng.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -447,8 +459,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.SergeiVeretennikov.BlockedByEng;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SergeiVeretennikov.BlockedByEng12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -460,6 +473,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BlockedByEng/BlockedByEng.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JM2LZTGHNA;
@@ -475,8 +490,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.SergeiVeretennikov.BlockedByEng;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SergeiVeretennikov.BlockedByEng12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
