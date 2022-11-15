@@ -15,21 +15,24 @@ final class MainViewController: BaseViewController {
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     private let layout = UICollectionViewFlowLayout()
     private let addButton = UIImageView()
+    private lazy var addListGesture = UITapGestureRecognizer(target: self, action: #selector(addButtonTapped))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         title = "Blocked by eng"
         
+        addButton.addGestureRecognizer(addListGesture)
         setLayout()
         addSubviews()
+        setConstraints()
         
         collectionView.contentInset.top = 20
+        
         viewModel.reloader.sink { _ in
             self.collectionView.reloadData()
         }.store(in: &viewModel.db)
         
-        setConstraints()
     }
     
     init(viewModel: ViewControllerViewModelProtocol) {
@@ -42,15 +45,15 @@ final class MainViewController: BaseViewController {
     }
     
     private func addSubviews() {
-        view.addSubview(collectionView)
-        view.insertSubview(addButton, aboveSubview: collectionView)
+        addButton.isUserInteractionEnabled = true
+        view.addSubview(addButton)
+        view.insertSubview(collectionView, belowSubview: addButton)
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(MainViewControllerCell.self, forCellWithReuseIdentifier: MainViewControllerCell.cellID)
         collectionView.alwaysBounceVertical = true
-        
         
         addButton.translatesAutoresizingMaskIntoConstraints = false
         addButton.image = UIImage(systemName: "plus.rectangle.fill")
@@ -63,7 +66,7 @@ final class MainViewController: BaseViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             addButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             addButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
@@ -74,6 +77,69 @@ final class MainViewController: BaseViewController {
     
     private func setLayout() {
         layout.estimatedItemSize = CGSize(width: constants.cellWidth, height: constants.cellHeight)
+    }
+    
+    private func addNewListAlert() {
+        let alertController = UIAlertController(title: "Add new list", message: nil, preferredStyle: .alert)
+        
+        
+        alertController.addTextField { $0.placeholder = "Enter list name"}
+        
+        alertController.addTextField { $0.placeholder = "Enter target language"}
+        
+        let firstTF = NotificationCenter.default
+            .publisher(for: UITextField.textDidChangeNotification, object: alertController.textFields?[0])
+            .map { ($0.object as? UITextField)?.text ?? "" }
+        
+        let secondTF = NotificationCenter.default
+            .publisher(for: UITextField.textDidChangeNotification, object: alertController.textFields?[1])
+            .map { ($0.object as? UITextField)?.text ?? "" }
+        
+        let sender = PassthroughSubject<(String, String), Never>()
+        
+        let first: AnyCancellable = firstTF.combineLatest(firstTF).sink { str in
+            sender.send(str)
+        } 
+        
+        let cancel: AnyCancellable = secondTF.combineLatest(firstTF).sink { str in
+            sender.send(str)
+        }
+        
+        first.store(in: &viewModel.db)
+        cancel.store(in: &viewModel.db)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+        
+        let alertAction = UIAlertAction(title: "Add", style: .default) { [weak self] action in
+            guard let title = alertController.textFields?[0].text else { return }
+            guard let language = alertController.textFields?[1].text else { return }
+            self?.viewModel.addNewListWith(title: title, and: language)
+        }
+        alertAction.isEnabled = false
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(alertAction)
+        
+        sender.map { strings in
+            return !strings.0.isEmpty && !strings.1.isEmpty
+        }.assign(to: \.isEnabled, on: alertAction).store(in: &viewModel.db)
+        
+        present(alertController, animated: true)
+    }
+    
+    @objc private func addButtonTapped() {
+        let animation = CABasicAnimation(keyPath: "opacity")
+        
+        animation.timingFunction = CAMediaTimingFunction(name: .linear)
+
+        animation.fromValue = 1
+        animation.toValue = 0.65
+        
+        animation.autoreverses = true
+        animation.duration = 0.1
+        
+        addButton.layer.add(animation, forKey: nil)
+        addNewListAlert()
     }
 }
 
@@ -88,7 +154,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.configureCellWith(viewModel: viewModel.createCellViewModel(indexPath: indexPath))
         
         return cell
-    }  
+    }
 }
 
 extension MainViewController {

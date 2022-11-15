@@ -19,5 +19,6 @@ final class WordsList: Object {
     @Persisted var listTitle: String = ""
     @Persisted var creationDate: Date = Date()
     @Persisted var wordsList: List<Word> 
+    @Persisted var learningTitle: String = ""
 }
 

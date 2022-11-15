@@ -46,6 +46,11 @@
 		098091E8292116C900CB5936 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		098091EB2921525E00CB5936 /* MainViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerCell.swift; sourceTree = "<group>"; };
 		098091ED29216E7A00CB5936 /* MainCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellViewModel.swift; sourceTree = "<group>"; };
+		09A03F9E2923C3B7004E610B /* SwiftGen_SwiftGenCLI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SwiftGen_SwiftGenCLI.bundle; sourceTree = "<group>"; };
+		09A03F9F2923C3B7004E610B /* swiftgen */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = swiftgen; sourceTree = "<group>"; };
+		09A03FA02923C3B7004E610B /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		09A03FA12923C3B7004E610B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		09A03FA22923C3B7004E610B /* LICENCE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENCE; sourceTree = "<group>"; };
 		09B6D8D129227A9300215E43 /* BlockedByEng.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = BlockedByEng.entitlements; path = BlockedByEng/BlockedByEng.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +76,7 @@
 		098091A32920D14300CB5936 = {
 			isa = PBXGroup;
 			children = (
+				09A03F9C2923C3B7004E610B /* SwiftGen */,
 				09B6D8D129227A9300215E43 /* BlockedByEng.entitlements */,
 				098091E22921000D00CB5936 /* Graphics */,
 				098091AE2920D14300CB5936 /* BlockedByEng */,
@@ -175,6 +181,26 @@
 				098091ED29216E7A00CB5936 /* MainCellViewModel.swift */,
 			);
 			path = MainCells;
+			sourceTree = "<group>";
+		};
+		09A03F9C2923C3B7004E610B /* SwiftGen */ = {
+			isa = PBXGroup;
+			children = (
+				09A03F9D2923C3B7004E610B /* bin */,
+				09A03FA02923C3B7004E610B /* CHANGELOG.md */,
+				09A03FA12923C3B7004E610B /* README.md */,
+				09A03FA22923C3B7004E610B /* LICENCE */,
+			);
+			path = SwiftGen;
+			sourceTree = "<group>";
+		};
+		09A03F9D2923C3B7004E610B /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				09A03F9E2923C3B7004E610B /* SwiftGen_SwiftGenCLI.bundle */,
+				09A03F9F2923C3B7004E610B /* swiftgen */,
+			);
+			path = bin;
 			sourceTree = "<group>";
 		};
 		09B6D8D229228AE300215E43 /* ViewController */ = {

@@ -17,6 +17,8 @@ protocol ViewControllerViewModelProtocol {
     var reloader: PassthroughSubject<Void, Never> { get set }
     var db: Set<AnyCancellable> { get set }
     
+    
+    func addNewListWith(title: String, and language: String)
     func createCellViewModel(indexPath: IndexPath) -> MainCellViewModelProtocol
 }
 
@@ -50,8 +52,17 @@ final class ViewControllerViewModel: ViewControllerViewModelProtocol {
         reloader.send(())
     }
     
+    func addNewListWith(title: String, and language: String) {
+        let list = WordsList()
+        list.listTitle = title
+        list.learningTitle = language
+        
+        sqlManager.addNew(word: list)
+        reloader.send(())
+    }
+    
     func createCellViewModel(indexPath: IndexPath) -> MainCellViewModelProtocol {
-        guard let wordsList = results?.sorted(by: {$0.creationDate < $1.creationDate}) else { return MainCellViewModel(wordsList: WordsList()) }
+        guard let wordsList = results?.sorted(by: {$0.creationDate > $1.creationDate}) else { return MainCellViewModel(wordsList: WordsList()) }
         return MainCellViewModel(wordsList: wordsList[indexPath.row])
     }
 }

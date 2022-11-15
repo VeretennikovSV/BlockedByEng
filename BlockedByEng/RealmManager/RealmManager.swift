@@ -54,9 +54,9 @@ final class RealmManager: RealmManagerProtocol {
     }
     
     init() {
-        let conf = Realm.Configuration(schemaVersion: 3) { migration, oldSchemaVersion in
-            if oldSchemaVersion < 3 {
-                
+        let conf = Realm.Configuration(schemaVersion: 4) { migration, oldSchemaVersion in
+            migration.enumerateObjects(ofType: "WordsList") { oldObject, newObject in
+                newObject?["learningTitle"] = "default"
             }
         }
         do {

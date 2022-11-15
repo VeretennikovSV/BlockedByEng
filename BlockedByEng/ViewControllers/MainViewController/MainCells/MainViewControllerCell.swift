@@ -17,6 +17,14 @@ final class MainViewControllerCell: UICollectionViewCell {
     private let numberOfWords = UILabel()
     private let numberTitle = UILabel()
     private let stack = UIStackView()
+    private let layerTwo = CALayer()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        viewModel = nil
+        
+        subviews.forEach { $0.isHidden = true }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,15 +33,15 @@ final class MainViewControllerCell: UICollectionViewCell {
         
         addSubviews(views: listTitle, numberOfWords, numberTitle)
         
+        layerTwo.bounds = self.layer.bounds
+        layerTwo.position = layer.position
+        layer.insertSublayer(layerTwo, at: 0)
+        
         listTitle.font = UIFont.systemFont(ofSize: 17, weight: .bold)
         numberTitle.text = "Количество слов"
         numberTitle.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         numberOfWords.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         
-        stack.axis = .vertical
-        stack.spacing = 16
-        
-        setConstraints()
         setInterface()
     }
     
@@ -66,18 +74,13 @@ final class MainViewControllerCell: UICollectionViewCell {
     private func setInterface() {
         layer.cornerRadius = 16
         contentView.layer.cornerRadius = 16
-        
-        let layerTwo = CALayer()
-        layerTwo.bounds = self.layer.bounds
-        layerTwo.position = layer.position
-        layer.insertSublayer(layerTwo, at: 0)
-        
-        layerTwo.shadowColor = UIColor.gray.cgColor
-        layerTwo.shadowRadius = 4
-        layerTwo.shadowOffset = CGSize(width: -25, height: -6)
-        layerTwo.shadowPath = UIBezierPath(roundedRect: bounds.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -5)), cornerRadius: 16).cgPath
-        layerTwo.shadowOpacity = 0.2
-        layerTwo.masksToBounds = false
+//        
+//        layerTwo.shadowColor = UIColor.gray.cgColor
+//        layerTwo.shadowRadius = 4
+//        layerTwo.shadowOffset = CGSize(width: -25, height: -6)
+//        layerTwo.shadowPath = UIBezierPath(roundedRect: bounds.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -5)), cornerRadius: 16).cgPath
+//        layerTwo.shadowOpacity = 0.2
+//        layerTwo.masksToBounds = false
         
         layer.shadowColor = UIColor.gray.cgColor
         layer.shadowRadius = 4
@@ -91,9 +94,10 @@ final class MainViewControllerCell: UICollectionViewCell {
         self.viewModel = viewModel
         
         listTitle.text = viewModel.wordsList.listTitle
-        print(viewModel.wordsList.wordsList)
         numberOfWords.text = String(viewModel.wordsList.wordsList.count)
+        DispatchQueue.main.asyncAfter(deadline: .now()) { [unowned self] in
+            setConstraints()
+            subviews.forEach { $0.isHidden = false }
+        }
     }
 }
-
-
