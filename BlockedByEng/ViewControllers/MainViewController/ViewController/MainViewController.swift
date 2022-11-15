@@ -57,7 +57,7 @@ final class MainViewController: BaseViewController {
         
         addButton.translatesAutoresizingMaskIntoConstraints = false
         addButton.image = UIImage(systemName: "plus.rectangle.fill")
-        addButton.tintColor = #colorLiteral(red: 0, green: 0.6058987975, blue: 1, alpha: 1)
+        addButton.tintColor = Asset.basicColor.color
         addButton.contentMode = .scaleAspectFit
     }
     

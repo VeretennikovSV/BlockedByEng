@@ -17,7 +17,7 @@ class BaseViewController: UIViewController {
     
     private func setNavigationSettings() {
         let navApp = UINavigationBarAppearance()
-        navApp.backgroundColor = #colorLiteral(red: 0, green: 0.6058987975, blue: 1, alpha: 1)
+        navApp.backgroundColor = Asset.basicColor.color
         
         navApp.largeTitleTextAttributes = [.font: UIFont.systemFont(ofSize: 24), .foregroundColor: UIColor.white]
         navApp.titleTextAttributes = [.font: UIFont.systemFont(ofSize: 17), .foregroundColor: UIColor.white]

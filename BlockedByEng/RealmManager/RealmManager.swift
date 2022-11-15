@@ -47,6 +47,7 @@ final class RealmManager: RealmManagerProtocol {
             try realm.write {
                 action()
                 try realm.commitWrite()
+                
             }
         } catch let error {
             print(error)

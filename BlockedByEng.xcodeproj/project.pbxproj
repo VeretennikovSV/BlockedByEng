@@ -28,6 +28,9 @@
 		098091E9292116C900CB5936 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098091E8292116C900CB5936 /* BaseViewController.swift */; };
 		098091EC2921525E00CB5936 /* MainViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098091EB2921525E00CB5936 /* MainViewControllerCell.swift */; };
 		098091EE29216E7A00CB5936 /* MainCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098091ED29216E7A00CB5936 /* MainCellViewModel.swift */; };
+		09A03FA92923CDD2004E610B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09A03FA82923CDD2004E610B /* Localizable.strings */; };
+		09A03FAB2923D382004E610B /* assets-images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A03FAA2923D382004E610B /* assets-images.swift */; };
+		09A03FAF2923D3C1004E610B /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A03FAE2923D3C1004E610B /* strings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,11 +49,9 @@
 		098091E8292116C900CB5936 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		098091EB2921525E00CB5936 /* MainViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerCell.swift; sourceTree = "<group>"; };
 		098091ED29216E7A00CB5936 /* MainCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellViewModel.swift; sourceTree = "<group>"; };
-		09A03F9E2923C3B7004E610B /* SwiftGen_SwiftGenCLI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SwiftGen_SwiftGenCLI.bundle; sourceTree = "<group>"; };
-		09A03F9F2923C3B7004E610B /* swiftgen */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = swiftgen; sourceTree = "<group>"; };
-		09A03FA02923C3B7004E610B /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
-		09A03FA12923C3B7004E610B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		09A03FA22923C3B7004E610B /* LICENCE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENCE; sourceTree = "<group>"; };
+		09A03FA82923CDD2004E610B /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		09A03FAA2923D382004E610B /* assets-images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "assets-images.swift"; sourceTree = "<group>"; };
+		09A03FAE2923D3C1004E610B /* strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
 		09B6D8D129227A9300215E43 /* BlockedByEng.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = BlockedByEng.entitlements; path = BlockedByEng/BlockedByEng.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,10 +77,9 @@
 		098091A32920D14300CB5936 = {
 			isa = PBXGroup;
 			children = (
-				09A03F9C2923C3B7004E610B /* SwiftGen */,
-				09B6D8D129227A9300215E43 /* BlockedByEng.entitlements */,
-				098091E22921000D00CB5936 /* Graphics */,
 				098091AE2920D14300CB5936 /* BlockedByEng */,
+				098091BD2920D14800CB5936 /* Info.plist */,
+				09B6D8D129227A9300215E43 /* BlockedByEng.entitlements */,
 				098091AD2920D14300CB5936 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,7 +100,7 @@
 				098091DA2920DE1200CB5936 /* Models */,
 				098091C42920D5ED00CB5936 /* FireBase */,
 				098091C32920D54500CB5936 /* Defaults */,
-				098091BD2920D14800CB5936 /* Info.plist */,
+				09A03FA52923CD81004E610B /* Resources */,
 				098091E52921009600CB5936 /* Coordinator */,
 			);
 			path = BlockedByEng;
@@ -183,24 +183,31 @@
 			path = MainCells;
 			sourceTree = "<group>";
 		};
-		09A03F9C2923C3B7004E610B /* SwiftGen */ = {
+		09A03FA52923CD81004E610B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				09A03F9D2923C3B7004E610B /* bin */,
-				09A03FA02923C3B7004E610B /* CHANGELOG.md */,
-				09A03FA12923C3B7004E610B /* README.md */,
-				09A03FA22923C3B7004E610B /* LICENCE */,
+				098091E22921000D00CB5936 /* Graphics */,
+				09A03FA72923CDB9004E610B /* Texts */,
+				09A03FA62923CD9C004E610B /* Generated */,
 			);
-			path = SwiftGen;
+			path = Resources;
 			sourceTree = "<group>";
 		};
-		09A03F9D2923C3B7004E610B /* bin */ = {
+		09A03FA62923CD9C004E610B /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				09A03F9E2923C3B7004E610B /* SwiftGen_SwiftGenCLI.bundle */,
-				09A03F9F2923C3B7004E610B /* swiftgen */,
+				09A03FAA2923D382004E610B /* assets-images.swift */,
+				09A03FAE2923D3C1004E610B /* strings.swift */,
 			);
-			path = bin;
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		09A03FA72923CDB9004E610B /* Texts */ = {
+			isa = PBXGroup;
+			children = (
+				09A03FA82923CDD2004E610B /* Localizable.strings */,
+			);
+			path = Texts;
 			sourceTree = "<group>";
 		};
 		09B6D8D229228AE300215E43 /* ViewController */ = {
@@ -223,6 +230,7 @@
 				098091A92920D14300CB5936 /* Frameworks */,
 				098091AA2920D14300CB5936 /* Resources */,
 				098091D42920D7B100CB5936 /* Crushlytics */,
+				09A03FA32923C437004E610B /* Swiftgen */,
 			);
 			buildRules = (
 			);
@@ -286,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				098091BC2920D14800CB5936 /* LaunchScreen.storyboard in Resources */,
+				09A03FA92923CDD2004E610B /* Localizable.strings in Resources */,
 				098091B92920D14800CB5936 /* Assets.xcassets in Resources */,
 				098091C62920D5ED00CB5936 /* GoogleService-Info.plist in Resources */,
 			);
@@ -314,6 +323,25 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 		};
+		09A03FA32923C437004E610B /* Swiftgen */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftgen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PROJECT_DIR}/SwiftGen/bin/swiftgen\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -323,8 +351,10 @@
 			files = (
 				098091B42920D14600CB5936 /* MainViewController.swift in Sources */,
 				098091EE29216E7A00CB5936 /* MainCellViewModel.swift in Sources */,
+				09A03FAF2923D3C1004E610B /* strings.swift in Sources */,
 				098091E42921006800CB5936 /* ViewControllerViewModel.swift in Sources */,
 				098091B02920D14300CB5936 /* AppDelegate.swift in Sources */,
+				09A03FAB2923D382004E610B /* assets-images.swift in Sources */,
 				098091DF2920DF7E00CB5936 /* RealmManager.swift in Sources */,
 				098091EC2921525E00CB5936 /* MainViewControllerCell.swift in Sources */,
 				098091B22920D14600CB5936 /* SceneDelegate.swift in Sources */,
