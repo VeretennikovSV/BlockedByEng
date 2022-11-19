@@ -19,9 +19,6 @@ final class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        title = "Blocked by eng"
-        
         addButton.addGestureRecognizer(addListGesture)
         setLayout()
         addSubviews()
@@ -32,12 +29,12 @@ final class MainViewController: BaseViewController {
         viewModel.reloader.sink { _ in
             self.collectionView.reloadData()
         }.store(in: &viewModel.db)
-        
     }
     
-    init(viewModel: ViewControllerViewModelProtocol) {
+    init(viewModel: ViewControllerViewModelProtocol, title: String) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.title = title
     }
     
     required init?(coder: NSCoder) {
@@ -97,7 +94,7 @@ final class MainViewController: BaseViewController {
         
         let sender = PassthroughSubject<(String, String), Never>()
         
-        let first: AnyCancellable = firstTF.combineLatest(firstTF).sink { str in
+        let first: AnyCancellable = firstTF.combineLatest(secondTF).sink { str in
             sender.send(str)
         } 
         
@@ -121,6 +118,7 @@ final class MainViewController: BaseViewController {
         alertController.addAction(alertAction)
         
         sender.map { strings in
+            print(strings)
             return !strings.0.isEmpty && !strings.1.isEmpty
         }.assign(to: \.isEnabled, on: alertAction).store(in: &viewModel.db)
         
@@ -145,7 +143,7 @@ final class MainViewController: BaseViewController {
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.results?.count ?? 0
+        viewModel.getNumberOfLists()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -154,6 +152,10 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.configureCellWith(viewModel: viewModel.createCellViewModel(indexPath: indexPath))
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.coordinator.showWordsList(list: viewModel.getListFor(indexPath: indexPath))
     }
 }
 

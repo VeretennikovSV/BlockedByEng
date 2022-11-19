@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0971EED42926828000E966CC /* WordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0971EED32926828000E966CC /* WordsViewController.swift */; };
+		0971EED6292682A700E966CC /* WordsViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0971EED5292682A700E966CC /* WordsViewControllerViewModel.swift */; };
+		0971EED82926866200E966CC /* BaseViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0971EED72926866200E966CC /* BaseViewModelProtocol.swift */; };
 		098091B02920D14300CB5936 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098091AF2920D14300CB5936 /* AppDelegate.swift */; };
 		098091B22920D14600CB5936 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098091B12920D14600CB5936 /* SceneDelegate.swift */; };
 		098091B42920D14600CB5936 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098091B32920D14600CB5936 /* MainViewController.swift */; };
@@ -34,6 +37,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0971EED32926828000E966CC /* WordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsViewController.swift; sourceTree = "<group>"; };
+		0971EED5292682A700E966CC /* WordsViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsViewControllerViewModel.swift; sourceTree = "<group>"; };
+		0971EED72926866200E966CC /* BaseViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModelProtocol.swift; sourceTree = "<group>"; };
 		098091AC2920D14300CB5936 /* BlockedByEng.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlockedByEng.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		098091AF2920D14300CB5936 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		098091B12920D14600CB5936 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,11 +80,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0971EED22926825500E966CC /* WordsController */ = {
+			isa = PBXGroup;
+			children = (
+				0971EED32926828000E966CC /* WordsViewController.swift */,
+				0971EED5292682A700E966CC /* WordsViewControllerViewModel.swift */,
+			);
+			path = WordsController;
+			sourceTree = "<group>";
+		};
 		098091A32920D14300CB5936 = {
 			isa = PBXGroup;
 			children = (
 				098091AE2920D14300CB5936 /* BlockedByEng */,
-				098091BD2920D14800CB5936 /* Info.plist */,
 				09B6D8D129227A9300215E43 /* BlockedByEng.entitlements */,
 				098091AD2920D14300CB5936 /* Products */,
 			);
@@ -95,13 +109,14 @@
 		098091AE2920D14300CB5936 /* BlockedByEng */ = {
 			isa = PBXGroup;
 			children = (
+				098091BD2920D14800CB5936 /* Info.plist */,
 				098091E02920E08300CB5936 /* ViewControllers */,
 				098091DD2920DF6C00CB5936 /* RealmManager */,
 				098091DA2920DE1200CB5936 /* Models */,
 				098091C42920D5ED00CB5936 /* FireBase */,
 				098091C32920D54500CB5936 /* Defaults */,
 				09A03FA52923CD81004E610B /* Resources */,
-				098091E52921009600CB5936 /* Coordinator */,
+				098091E52921009600CB5936 /* BaseFiles */,
 			);
 			path = BlockedByEng;
 			sourceTree = "<group>";
@@ -142,8 +157,8 @@
 		098091E02920E08300CB5936 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0971EED22926825500E966CC /* WordsController */,
 				098091E12920E09800CB5936 /* MainViewController */,
-				098091E8292116C900CB5936 /* BaseViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -166,12 +181,14 @@
 			path = Graphics;
 			sourceTree = "<group>";
 		};
-		098091E52921009600CB5936 /* Coordinator */ = {
+		098091E52921009600CB5936 /* BaseFiles */ = {
 			isa = PBXGroup;
 			children = (
+				098091E8292116C900CB5936 /* BaseViewController.swift */,
 				098091E6292100AD00CB5936 /* Coordinator.swift */,
+				0971EED72926866200E966CC /* BaseViewModelProtocol.swift */,
 			);
-			path = Coordinator;
+			path = BaseFiles;
 			sourceTree = "<group>";
 		};
 		098091EA2921524800CB5936 /* MainCells */ = {
@@ -349,10 +366,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0971EED82926866200E966CC /* BaseViewModelProtocol.swift in Sources */,
 				098091B42920D14600CB5936 /* MainViewController.swift in Sources */,
 				098091EE29216E7A00CB5936 /* MainCellViewModel.swift in Sources */,
 				09A03FAF2923D3C1004E610B /* strings.swift in Sources */,
 				098091E42921006800CB5936 /* ViewControllerViewModel.swift in Sources */,
+				0971EED42926828000E966CC /* WordsViewController.swift in Sources */,
 				098091B02920D14300CB5936 /* AppDelegate.swift in Sources */,
 				09A03FAB2923D382004E610B /* assets-images.swift in Sources */,
 				098091DF2920DF7E00CB5936 /* RealmManager.swift in Sources */,
@@ -361,6 +380,7 @@
 				098091E9292116C900CB5936 /* BaseViewController.swift in Sources */,
 				098091DC2920DE2700CB5936 /* WordModel.swift in Sources */,
 				098091E7292100AD00CB5936 /* Coordinator.swift in Sources */,
+				0971EED6292682A700E966CC /* WordsViewControllerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
