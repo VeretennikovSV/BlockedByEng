@@ -7,28 +7,24 @@
 
 import UIKit
 import Firebase
+import XCoordinator
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+    private let router = MainViewCoordinator().strongRouter
+    private lazy var mainWindow = UIWindow()
     var window: UIWindow?
-
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let scene = (scene as? UIWindowScene) else { return }
-        
-        let navController = UINavigationController()
-        
-        let coordinator: CoordinatorProtocol = Coordinator(navController: navController)
-        coordinator.start()
-        
-        let window = UIWindow(windowScene: scene)
         FirebaseApp.configure()
         
-        window.rootViewController = coordinator.navController
-        
+        let window = UIWindow(windowScene: scene)
         self.window = window
-        self.window?.makeKeyAndVisible()
+        
+        router.setRoot(for: self.window!)
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

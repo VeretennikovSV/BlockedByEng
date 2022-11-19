@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0936266E29296EE0009A6D81 /* MainViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0936266D29296EE0009A6D81 /* MainViewCoordinator.swift */; };
 		0971EED42926828000E966CC /* WordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0971EED32926828000E966CC /* WordsViewController.swift */; };
 		0971EED6292682A700E966CC /* WordsViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0971EED5292682A700E966CC /* WordsViewControllerViewModel.swift */; };
 		0971EED82926866200E966CC /* BaseViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0971EED72926866200E966CC /* BaseViewModelProtocol.swift */; };
+		0971EF0D29294F6C00E966CC /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 0971EF0C29294F6C00E966CC /* XCoordinator */; };
+		0971EF0F29294F6C00E966CC /* XCoordinatorCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 0971EF0E29294F6C00E966CC /* XCoordinatorCombine */; };
 		098091B02920D14300CB5936 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098091AF2920D14300CB5936 /* AppDelegate.swift */; };
 		098091B22920D14600CB5936 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098091B12920D14600CB5936 /* SceneDelegate.swift */; };
 		098091B42920D14600CB5936 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098091B32920D14600CB5936 /* MainViewController.swift */; };
@@ -37,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0936266D29296EE0009A6D81 /* MainViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCoordinator.swift; sourceTree = "<group>"; };
 		0971EED32926828000E966CC /* WordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsViewController.swift; sourceTree = "<group>"; };
 		0971EED5292682A700E966CC /* WordsViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsViewControllerViewModel.swift; sourceTree = "<group>"; };
 		0971EED72926866200E966CC /* BaseViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -66,10 +70,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0971EF0F29294F6C00E966CC /* XCoordinatorCombine in Frameworks */,
 				098091D92920DC1B00CB5936 /* RealmSwift in Frameworks */,
 				098091D72920DC1B00CB5936 /* Realm in Frameworks */,
 				098091CD2920D6A400CB5936 /* FirebaseCrashlytics in Frameworks */,
 				098091C92920D6A300CB5936 /* FirebaseAnalytics in Frameworks */,
+				0971EF0D29294F6C00E966CC /* XCoordinator in Frameworks */,
 				098091CF2920D6A400CB5936 /* FirebaseDatabase in Frameworks */,
 				098091D12920D6A400CB5936 /* FirebaseFirestore in Frameworks */,
 				098091CB2920D6A400CB5936 /* FirebaseAuth in Frameworks */,
@@ -87,6 +93,14 @@
 				0971EED5292682A700E966CC /* WordsViewControllerViewModel.swift */,
 			);
 			path = WordsController;
+			sourceTree = "<group>";
+		};
+		0971EF102929505900E966CC /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				0936266D29296EE0009A6D81 /* MainViewCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		098091A32920D14300CB5936 = {
@@ -109,6 +123,7 @@
 		098091AE2920D14300CB5936 /* BlockedByEng */ = {
 			isa = PBXGroup;
 			children = (
+				0971EF102929505900E966CC /* Coordinators */,
 				098091BD2920D14800CB5936 /* Info.plist */,
 				098091E02920E08300CB5936 /* ViewControllers */,
 				098091DD2920DF6C00CB5936 /* RealmManager */,
@@ -263,6 +278,8 @@
 				098091D22920D6A400CB5936 /* FirebaseStorage */,
 				098091D62920DC1B00CB5936 /* Realm */,
 				098091D82920DC1B00CB5936 /* RealmSwift */,
+				0971EF0C29294F6C00E966CC /* XCoordinator */,
+				0971EF0E29294F6C00E966CC /* XCoordinatorCombine */,
 			);
 			productName = BlockedByEng;
 			productReference = 098091AC2920D14300CB5936 /* BlockedByEng.app */;
@@ -295,6 +312,7 @@
 			packageReferences = (
 				098091C72920D6A300CB5936 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				098091D52920DC1B00CB5936 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				0971EF0B29294F6B00E966CC /* XCRemoteSwiftPackageReference "XCoordinator" */,
 			);
 			productRefGroup = 098091AD2920D14300CB5936 /* Products */;
 			projectDirPath = "";
@@ -378,6 +396,7 @@
 				098091EC2921525E00CB5936 /* MainViewControllerCell.swift in Sources */,
 				098091B22920D14600CB5936 /* SceneDelegate.swift in Sources */,
 				098091E9292116C900CB5936 /* BaseViewController.swift in Sources */,
+				0936266E29296EE0009A6D81 /* MainViewCoordinator.swift in Sources */,
 				098091DC2920DE2700CB5936 /* WordModel.swift in Sources */,
 				098091E7292100AD00CB5936 /* Coordinator.swift in Sources */,
 				0971EED6292682A700E966CC /* WordsViewControllerViewModel.swift in Sources */,
@@ -599,6 +618,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0971EF0B29294F6B00E966CC /* XCRemoteSwiftPackageReference "XCoordinator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/QuickBirdEng/XCoordinator.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.2.0;
+			};
+		};
 		098091C72920D6A300CB5936 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -618,6 +645,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0971EF0C29294F6C00E966CC /* XCoordinator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0971EF0B29294F6B00E966CC /* XCRemoteSwiftPackageReference "XCoordinator" */;
+			productName = XCoordinator;
+		};
+		0971EF0E29294F6C00E966CC /* XCoordinatorCombine */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0971EF0B29294F6B00E966CC /* XCRemoteSwiftPackageReference "XCoordinator" */;
+			productName = XCoordinatorCombine;
+		};
 		098091C82920D6A300CB5936 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 098091C72920D6A300CB5936 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

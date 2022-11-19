@@ -9,33 +9,35 @@ import Foundation
 import Realm
 import RealmSwift
 import Combine
+import XCoordinator
+import XCoordinatorCombine
 
 protocol ViewControllerViewModelProtocol: BaseViewModelProtocol {
     var reloader: PassthroughSubject<Void, Never> { get set }
     var db: Set<AnyCancellable> { get set }
-    
+    var router: UnownedRouter<MainRoute> { get set }
     
     func addNewListWith(title: String, and language: String)
     func createCellViewModel(indexPath: IndexPath) -> MainCellViewModelProtocol
-    func getListFor(indexPath: IndexPath) -> WordsList
+    func getListFor(indexPath: IndexPath)
     func getNumberOfLists() -> Int
 }
 
 final class ViewControllerViewModel: ViewControllerViewModelProtocol {
     private var results: Results<WordsList>?
+    var router: UnownedRouter<MainRoute>
     
-    let coordinator: CoordinatorProtocol
     let sqlManager: RealmManagerProtocol
     var reloader = PassthroughSubject<Void, Never>()
     var db = Set<AnyCancellable>()
     
     init(
-        coordinator: CoordinatorProtocol,
-        sqlManager: RealmManagerProtocol = RealmManager()
+        sqlManager: RealmManagerProtocol = RealmManager(),
+        router: UnownedRouter<MainRoute>
     ) {
         self.sqlManager = sqlManager
-        self.coordinator = coordinator
         self.results = sqlManager.read()
+        self.router = router
         
         reloader.send(())
     }
@@ -54,9 +56,9 @@ final class ViewControllerViewModel: ViewControllerViewModelProtocol {
         return MainCellViewModel(wordsList: wordsList[indexPath.row])
     }
     
-    func getListFor(indexPath: IndexPath) -> WordsList {
-        guard let wordsList = results?.sorted(by: {$0.creationDate > $1.creationDate}) else { return WordsList() }
-        return wordsList[indexPath.item]
+    func getListFor(indexPath: IndexPath) {
+        guard let wordsList = results?.sorted(by: {$0.creationDate > $1.creationDate}) else { return }
+        router.trigger(.wordListDetails(wordsList[indexPath.item]))
     }
     
     func getNumberOfLists() -> Int {

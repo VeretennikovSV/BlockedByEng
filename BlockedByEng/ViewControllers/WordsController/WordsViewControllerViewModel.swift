@@ -14,16 +14,13 @@ protocol WordsViewControllerViewModelProtocol: BaseViewModelProtocol {
 final class WordsViewControllerViewModel: WordsViewControllerViewModelProtocol {
     private let wordsList: WordsList
     
-    let coordinator: CoordinatorProtocol
     let sqlManager: RealmManagerProtocol
     
     init(
         wordsList: WordsList,
-        coordinator: CoordinatorProtocol,
         sqlManager: RealmManagerProtocol = RealmManager()
     ) {
         self.wordsList = wordsList
-        self.coordinator = coordinator
         self.sqlManager = sqlManager
     }
     

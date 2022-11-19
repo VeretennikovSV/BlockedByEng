@@ -7,6 +7,9 @@
 
 import UIKit
 import Combine
+import XCoordinator
+
+
 
 final class MainViewController: BaseViewController {
 
@@ -78,7 +81,6 @@ final class MainViewController: BaseViewController {
     
     private func addNewListAlert() {
         let alertController = UIAlertController(title: "Add new list", message: nil, preferredStyle: .alert)
-        
         
         alertController.addTextField { $0.placeholder = "Enter list name"}
         
@@ -155,7 +157,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.coordinator.showWordsList(list: viewModel.getListFor(indexPath: indexPath))
+        viewModel.getListFor(indexPath: indexPath)
     }
 }
 
