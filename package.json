@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@favware/graphql-pokemon": "^7.0.8"
+  }
+}

@@ -34,6 +34,10 @@
 		098091E9292116C900CB5936 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098091E8292116C900CB5936 /* BaseViewController.swift */; };
 		098091EC2921525E00CB5936 /* MainViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098091EB2921525E00CB5936 /* MainViewControllerCell.swift */; };
 		098091EE29216E7A00CB5936 /* MainCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098091ED29216E7A00CB5936 /* MainCellViewModel.swift */; };
+		0983E9B12933A697004645D7 /* ChooseGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0983E9B02933A697004645D7 /* ChooseGameCell.swift */; };
+		0983E9B42933ABBA004645D7 /* fonts.md in Sources */ = {isa = PBXBuildFile; fileRef = 0983E9B32933ABBA004645D7 /* fonts.md */; };
+		0983E9B62933ABEE004645D7 /* generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0983E9B52933ABEE004645D7 /* generated.swift */; };
+		0983E9B92933B8BA004645D7 /* BaseShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0983E9B82933B8BA004645D7 /* BaseShadow.swift */; };
 		09A03FA92923CDD2004E610B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09A03FA82923CDD2004E610B /* Localizable.strings */; };
 		09A03FAB2923D382004E610B /* assets-images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A03FAA2923D382004E610B /* assets-images.swift */; };
 		09A03FAF2923D3C1004E610B /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A03FAE2923D3C1004E610B /* strings.swift */; };
@@ -59,6 +63,10 @@
 		098091E8292116C900CB5936 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		098091EB2921525E00CB5936 /* MainViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerCell.swift; sourceTree = "<group>"; };
 		098091ED29216E7A00CB5936 /* MainCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellViewModel.swift; sourceTree = "<group>"; };
+		0983E9B02933A697004645D7 /* ChooseGameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGameCell.swift; sourceTree = "<group>"; };
+		0983E9B32933ABBA004645D7 /* fonts.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = fonts.md; sourceTree = "<group>"; };
+		0983E9B52933ABEE004645D7 /* generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = generated.swift; sourceTree = "<group>"; };
+		0983E9B82933B8BA004645D7 /* BaseShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseShadow.swift; sourceTree = "<group>"; };
 		09A03FA82923CDD2004E610B /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		09A03FAA2923D382004E610B /* assets-images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "assets-images.swift"; sourceTree = "<group>"; };
 		09A03FAE2923D3C1004E610B /* strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
@@ -89,6 +97,7 @@
 		0971EED22926825500E966CC /* WordsController */ = {
 			isa = PBXGroup;
 			children = (
+				0983E9AF293398C7004645D7 /* WordsControllerCell */,
 				0971EED32926828000E966CC /* WordsViewController.swift */,
 				0971EED5292682A700E966CC /* WordsViewControllerViewModel.swift */,
 			);
@@ -123,6 +132,7 @@
 		098091AE2920D14300CB5936 /* BlockedByEng */ = {
 			isa = PBXGroup;
 			children = (
+				0983E9B72933B8A4004645D7 /* Extensions */,
 				0971EF102929505900E966CC /* Coordinators */,
 				098091BD2920D14800CB5936 /* Info.plist */,
 				098091E02920E08300CB5936 /* ViewControllers */,
@@ -215,9 +225,35 @@
 			path = MainCells;
 			sourceTree = "<group>";
 		};
+		0983E9AF293398C7004645D7 /* WordsControllerCell */ = {
+			isa = PBXGroup;
+			children = (
+				0983E9B02933A697004645D7 /* ChooseGameCell.swift */,
+			);
+			path = WordsControllerCell;
+			sourceTree = "<group>";
+		};
+		0983E9B22933ABB0004645D7 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0983E9B32933ABBA004645D7 /* fonts.md */,
+				0983E9B52933ABEE004645D7 /* generated.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		0983E9B72933B8A4004645D7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0983E9B82933B8BA004645D7 /* BaseShadow.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		09A03FA52923CD81004E610B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0983E9B22933ABB0004645D7 /* Fonts */,
 				098091E22921000D00CB5936 /* Graphics */,
 				09A03FA72923CDB9004E610B /* Texts */,
 				09A03FA62923CD9C004E610B /* Generated */,
@@ -389,16 +425,20 @@
 				098091EE29216E7A00CB5936 /* MainCellViewModel.swift in Sources */,
 				09A03FAF2923D3C1004E610B /* strings.swift in Sources */,
 				098091E42921006800CB5936 /* ViewControllerViewModel.swift in Sources */,
+				0983E9B62933ABEE004645D7 /* generated.swift in Sources */,
 				0971EED42926828000E966CC /* WordsViewController.swift in Sources */,
 				098091B02920D14300CB5936 /* AppDelegate.swift in Sources */,
+				0983E9B12933A697004645D7 /* ChooseGameCell.swift in Sources */,
 				09A03FAB2923D382004E610B /* assets-images.swift in Sources */,
 				098091DF2920DF7E00CB5936 /* RealmManager.swift in Sources */,
 				098091EC2921525E00CB5936 /* MainViewControllerCell.swift in Sources */,
+				0983E9B92933B8BA004645D7 /* BaseShadow.swift in Sources */,
 				098091B22920D14600CB5936 /* SceneDelegate.swift in Sources */,
 				098091E9292116C900CB5936 /* BaseViewController.swift in Sources */,
 				0936266E29296EE0009A6D81 /* MainViewCoordinator.swift in Sources */,
 				098091DC2920DE2700CB5936 /* WordModel.swift in Sources */,
 				098091E7292100AD00CB5936 /* Coordinator.swift in Sources */,
+				0983E9B42933ABBA004645D7 /* fonts.md in Sources */,
 				0971EED6292682A700E966CC /* WordsViewControllerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

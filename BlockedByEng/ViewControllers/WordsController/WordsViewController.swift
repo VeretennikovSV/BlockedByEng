@@ -7,9 +7,18 @@
 
 import UIKit
 
+protocol RouteDelegate: AnyObject {
+    func routeTo(_ adress: MainRoute)
+}
+
 final class WordsViewController: BaseViewController {
     
-    
+    private let nameCards: [(title: String, route: MainRoute)] = [
+        ("Карточки", .cards),
+        ("Тест", .test),
+        ("Диктант", .dictant),
+        ("Сопоставление", .match)
+    ]
     
     var barHeightt: CGFloat { (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0) + (navigationController?.navigationBar.frame.height ?? 0) }
     
@@ -30,7 +39,7 @@ final class WordsViewController: BaseViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.register(ChooseGameCell.self, forCellWithReuseIdentifier: ChooseGameCell.cellID)
         
         setConstraints()
     }
@@ -53,7 +62,7 @@ final class WordsViewController: BaseViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }
@@ -64,12 +73,17 @@ extension WordsViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChooseGameCell.cellID, for: indexPath) as? ChooseGameCell else { return UICollectionViewCell() }
         
-        cell.backgroundColor = .red
-        cell.layer.cornerRadius = 16
+        cell.setLabel(nameCards[indexPath.row], delegate: self)
         
         return cell
+    }
+}
+
+extension WordsViewController: RouteDelegate {
+    func routeTo(_ adress: MainRoute) {
+        viewModel.router.trigger(adress)
     }
 }
 

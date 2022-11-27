@@ -72,13 +72,7 @@ final class MainViewControllerCell: UICollectionViewCell {
     private func setInterface() {
         layer.cornerRadius = 16
         contentView.layer.cornerRadius = 16
-        
-        layer.shadowColor = UIColor.gray.cgColor
-        layer.shadowRadius = 4
-        layer.shadowOffset = CGSize(width: 7, height: 7)
-        layer.shadowPath = UIBezierPath(roundedRect: bounds.inset(by: UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 0)), cornerRadius: 16).cgPath
-        layer.shadowOpacity = 0.45
-        layer.masksToBounds = false
+        setShadow(cornerRadius: 16)
     }
     
     func configureCellWith(viewModel: MainCellViewModelProtocol) {

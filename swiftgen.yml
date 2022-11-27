@@ -1,0 +1,18 @@
+input_dir: BlockedByEng
+output_dir: BlockedByEng
+
+strings:
+  inputs: Resources/Texts/Localizable.strings
+  outputs:
+      templateName: structured-swift5
+      output: Resources/Generated/strings.swift
+xcassets:
+  inputs: Resources/Graphics/Assets.xcassets
+  outputs:
+      templateName: swift5
+      output: Resources/Generated/assets-images.swift
+fonts:
+  inputs: Resources/Fonts/fonts.md
+  outputs:
+    templateName: swift5
+    output: Resources/Fonts/generated.swift
