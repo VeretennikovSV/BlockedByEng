@@ -26,8 +26,12 @@ final class MainViewCoordinator: NavigationCoordinator<MainRoute> {
     override func prepareTransition(for route: MainRoute) -> NavigationTransition {
         switch route {
         case .mainView:
-            let vc = MainViewController(viewModel: ViewControllerViewModel(router: unownedRouter), title: "Learn It!")
-            return .push(vc)
+            if UserDefaults.standard.bool(forKey: "testOnly") {
+                return .show(UIViewController())
+            } else {
+                let vc = MainViewController(viewModel: ViewControllerViewModel(sqlManager: RealmManager() ,router: unownedRouter), title: "Learn It!")
+                return .push(vc)
+            }
         case .wordListDetails(let wordsList):
             let viewModel = WordsViewControllerViewModel(wordsList: wordsList, router: unownedRouter)
             let vc = WordsViewController(viewModel: viewModel)

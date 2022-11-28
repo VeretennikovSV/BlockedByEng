@@ -77,7 +77,7 @@ final class MainViewControllerCell: UICollectionViewCell {
     
     func configureCellWith(viewModel: MainCellViewModelProtocol) {
         self.viewModel = viewModel
-        listTitle.text = viewModel.wordsList.listTitle
-        numberOfWords.text = String(viewModel.wordsList.wordsList.count)
+        listTitle.text = viewModel.getTitle()
+        numberOfWords.text = String(viewModel.getNumberOfWords())
     }
 }

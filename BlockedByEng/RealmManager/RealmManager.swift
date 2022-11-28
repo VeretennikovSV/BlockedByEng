@@ -21,7 +21,6 @@ final class RealmManager: RealmManagerProtocol {
     private var realm: Realm!
     
     func addNew<T: Object>(word: T) {
-        print("User Realm User file location: \(realm.configuration.fileURL!.path)")
         
         enterRealm {
             realm.add(word)
@@ -55,16 +54,19 @@ final class RealmManager: RealmManagerProtocol {
     }
     
     init() {
-        let conf = Realm.Configuration(schemaVersion: 4) { migration, oldSchemaVersion in
-            migration.enumerateObjects(ofType: "WordsList") { oldObject, newObject in
-                newObject?["learningTitle"] = "default"
+    let fileManager = FileManager.default
+    var conf = Realm.Configuration()
+    
+    let urls = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+    
+        if let applicationURL = urls.last {
+            do {
+                try fileManager.createDirectory(at: applicationURL, withIntermediateDirectories: true)
+                conf.fileURL = applicationURL.appendingPathComponent("release.realm")
+                self.realm = try Realm(configuration: conf)
+            } catch {
+                print(error)
             }
-        }
-        do {
-            self.realm = try Realm(configuration: conf)
-        } catch let error {
-            print(error)
-            fatalError()
         }
     }
 }

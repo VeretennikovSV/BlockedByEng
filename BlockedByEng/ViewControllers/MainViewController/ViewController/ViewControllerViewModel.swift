@@ -23,11 +23,11 @@ protocol ViewControllerViewModelProtocol: BaseViewModelProtocol {
     func getNumberOfLists() -> Int
 }
 
-final class ViewControllerViewModel: ViewControllerViewModelProtocol {
+class ViewControllerViewModel: ViewControllerViewModelProtocol {
     private var results: Results<WordsList>?
     var router: UnownedRouter<MainRoute>
     
-    let sqlManager: RealmManagerProtocol
+    var sqlManager: RealmManagerProtocol?
     var reloader = PassthroughSubject<Void, Never>()
     var db = Set<AnyCancellable>()
     
@@ -47,7 +47,7 @@ final class ViewControllerViewModel: ViewControllerViewModelProtocol {
         list.listTitle = title
         list.learningTitle = language
         
-        sqlManager.addNew(word: list)
+        sqlManager?.addNew(word: list)
         reloader.send(())
     }
     
@@ -64,4 +64,14 @@ final class ViewControllerViewModel: ViewControllerViewModelProtocol {
     func getNumberOfLists() -> Int {
         results?.count ?? 0
     }
+}
+
+extension ViewControllerViewModelProtocol {
+    #if DEBUG
+    
+    func removeAll() {
+        sqlManager?.removeAll()
+    }
+    
+    #endif
 }

@@ -15,10 +15,14 @@ final class Word: Object {
     @Persisted var creationDate: Date = Date()
 }
 
-final class WordsList: Object {
+final class WordsList: Object, Comparable {
+    static func < (lhs: WordsList, rhs: WordsList) -> Bool {
+        lhs.creationDate < rhs.creationDate
+    }
+    
     @Persisted var listTitle: String = ""
     @Persisted var creationDate: Date = Date()
-    @Persisted var wordsList: List<Word> 
+    @Persisted var wordsList: List<Word>
     @Persisted var learningTitle: String = ""
 }
 

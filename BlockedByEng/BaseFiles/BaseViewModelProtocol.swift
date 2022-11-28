@@ -8,5 +8,5 @@
 import Foundation
 protocol BaseViewModelProtocol {
 //    var coordinator: CoordinatorProtocol { get }
-    var sqlManager: RealmManagerProtocol { get }
+    var sqlManager: RealmManagerProtocol? { get }
 } 

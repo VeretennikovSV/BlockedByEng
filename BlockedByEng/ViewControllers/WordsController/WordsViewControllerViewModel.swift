@@ -16,7 +16,7 @@ protocol WordsViewControllerViewModelProtocol: BaseViewModelProtocol {
 final class WordsViewControllerViewModel: WordsViewControllerViewModelProtocol {
     private let wordsList: WordsList
     
-    let sqlManager: RealmManagerProtocol
+    let sqlManager: RealmManagerProtocol?
     var router: UnownedRouter<MainRoute>
     
     init(
